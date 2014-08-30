@@ -1,0 +1,57 @@
+/*doc
+
+### Advice
+
+Для советов, подсказок, вопросов и ответов. Содержит скрытый ответ на вопрос в заголовке, который раскрывается при нажатии на специальный элемент.
+
+```html
+<div class="Advice accent m-t-15 m-b-05">
+  <h4 class="Advice__header">Как пользоваться инструментом подбора картриджей?</h4>
+  <div class="Advice__content textNode">
+    ...
+  </div>
+  <div class="Advice__triggerW"><span class="Advice__trigger pseudoLink">Развернуть</span></div>
+</div>
+```
+
+```js
+if ($('.Advice').length) {
+  $('.Advice__trigger').click(function ()
+  {
+    var obj = $(this),
+        B = obj.parents('.Advice');
+    if (B.hasClass('active'))
+    {
+      obj.text('Развернуть');
+      B.removeClass('active')
+        .find('.Advice__content').slideUp();
+    }
+    else
+    {
+      obj.text('Скрыть');
+      B.addClass('active')
+        .find('.Advice__content').slideDown();
+    }
+  })
+}
+```
+*/
+
+.Advice {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.Advice__header {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+.Advice__content {
+  display: none;
+}
+
+
+.Advice.accent {
+  background-color: #f8f8f8;
+  padding: 1.5em;
+}

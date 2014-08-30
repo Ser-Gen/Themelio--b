@@ -1,0 +1,104 @@
+/* BLOCKS - TABLES
+---------------------------------------------------------------------*/
+
+/*doc
+
+## Таблицы
+
+### .PseudoTable
+
+Таблица, реализованная с помощью цсс. Может применяться для правильного выравнивания элементов по разные стороны контейнера, например
+
+```html
+<div class="PseudoTable w-full">
+	<div class="PseudoTable__cell">
+		<a href="#" class="btn Btn--default btnGreen">Создать акцию</a>
+	</div>
+	<div class="PseudoTable__cell t-a-r">
+		<a href="#" class="t-d-n"><i class="icon sort"></i>Изменить порядок отображения</a>
+	</div>
+</div>
+```
+
+Так же реализуется картинка с подписью (для анонсов)
+
+<div class="PseudoTable">
+	<div class="PseudoTable__cell">
+		<img src="http://placedog.com/35/35" style="margin-right: 1em;">
+	</div>
+	<div class="PseudoTable__cell">
+		Няшная картинка клёвой собаченьки
+	</div>
+</div>
+*/
+
+.PseudoTable,
+.PseudoTable__row,
+.PseudoTable__cell {
+	box-sizing: border-box;
+}
+.PseudoTable {
+	display: table;
+}
+.PseudoTable__row {
+	display: table-row;
+}
+.PseudoTable__cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+
+/* Col
+---------------------------------------------------------------------*/
+
+/*doc
+## Col
+
+Нужна для реализации псевдоколонок. Имеет несколько модификаторов размеров (`w-0`, `w-25p`, `w-33p`, `w-50p`, `w-75p`, `w-100p`).
+Между элементами `Col` не должно быть пробелов.
+
+Может использоваться, как псевдоячейка. Удобно задавать размеры в процентах; в отличие от ячейки настоящей таблицы, она будет фиксированных размеров вне зависимости от ширины содержимого.
+
+Выравнивается по середине. Ломает длинные беспробельные слова.
+
+```html
+<div class="Form Form__set accent">
+	<div class="Col__wrapper">
+		<div class="Col w-75p">
+			<div class="Form__field inputFull">
+				<span class="Form__title"><label class="Form__label" for="a">Вакантная должность:</label></span><input type="text" class="Form__input" id="a" value=""/>
+			</div>
+		</div><div class="Col w-25p">
+			<div class="Form__field inputFull">
+				<span class="Form__title"><label class="Form__label" for="b">Количество мест:</label></span><input type="text" class="Form__input" id="b" value=""/>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<a>
+	<span class="Col name">Имя</span>
+	<span class="Col age">Возраст</span>
+	<span class="Col weight">Вес</span>
+</a>
+```
+*/
+
+.Col__wrapper {
+	display: block;
+}
+.Col {
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	word-wrap: break-word;
+}
+.Col.w-0 {   width: 0; }
+.Col.w-25p { width: 25%; }
+.Col.w-33p { width: 33.33%; }
+.Col.w-50p { width: 50%; }
+.Col.w-75p { width: 75%; }
+.Col.w-100p { width: 100%; }

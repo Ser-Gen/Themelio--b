@@ -1,0 +1,23 @@
+/* BTN
+---------------------------------------------------------------------*/
+
+.Btn--default {
+	background-color: #777;
+}
+
+.Btn--main {
+	background-color: #f00;
+}
+
+
+
+Btn(mods = '') {
+	@extend .Btn;
+	if (match('default', mods)) {
+		@extend .Btn--default;
+	}
+	if (match('main', mods)) {
+		@extend .Btn--default;
+		@extend .Btn--main;
+	}
+}

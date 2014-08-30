@@ -1,0 +1,53 @@
+/* BLOCKS - PAGINATOR
+---------------------------------------------------------------------*/
+
+/*doc
+
+### Paginator
+
+Позволяет переходить по страницам. Активная страница — `active`.
+
+<div class="Paginator">
+	<span class="Paginator__pager"><a href="#">&larr;</a><small> + Ctrl</small></span>
+	<ul class="Paginator__list">
+		<li class="Paginator__item">
+			<a href="#">1</a>
+		</li><li class="Paginator__item active">
+			2
+		</li><li class="Paginator__item">
+			...
+		</li><li class="Paginator__item">
+			<a href="#">7</a>
+		</li>
+	</ul>
+	<span class="Paginator__pager"><small>Ctrl + </small><a href="#">&rarr;</a></span>
+</div>
+*/
+
+.Paginator {
+	cursor: default;
+}
+
+.Paginator__list,
+.Paginator__item {
+	display: inline-block;
+}
+
+.Paginator__pager small {
+	font-size: 70%;
+}
+
+.Paginator__list {
+	List();
+}
+
+.Paginator__item {
+	List__item();
+	margin-top: 0;
+	margin-left: .2em;
+	padding: 0 .4em;
+	
+	&:first-child {
+		margin-left: 0;
+	}
+}

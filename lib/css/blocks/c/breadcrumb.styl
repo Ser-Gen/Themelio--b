@@ -1,0 +1,43 @@
+/* BLOCKS - BREADCRUMBS
+---------------------------------------------------------------------*/
+
+/*doc
+
+### Breadcrumbs
+
+Показывает положение пользователя при многоуровневой навигации и позволяет перейти на любой предыдущий уровень.
+
+<div class="Breadcrumbs">
+	<ul class="Breadcrumbs__list">
+		<li class="Breadcrumbs__item"><a href="#">Главная</a></li><li class="Breadcrumbs__item active"><span>Обратная связь</span></li>
+	</ul>
+</div>
+*/
+
+.Breadcrumbs {
+	cursor: default;
+	line-height: 1;
+}
+.Breadcrumbs__list {
+	@extend .noUserSelect;
+	List();
+}
+.Breadcrumbs__item {
+	List__item();
+	display: inline-block;
+	margin-top: 0;
+	margin-right: .4em;
+	vertical-align: baseline;
+	
+	&:after {
+		content: "";
+		display: inline-block;
+		margin-top: -.17em;
+		margin-left: .5em;
+		vertical-align: middle;
+	}
+
+	&.active:after {
+		display: none;
+	}
+}

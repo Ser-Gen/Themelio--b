@@ -1,0 +1,93 @@
+html {
+	overflow-y: scroll;
+}
+
+input,
+button {
+	font: inherit;
+}
+
+pre code {
+	font-family: consolas, courier, monospace;
+}
+
+.Page {
+	margin: 50px;
+}
+
+.doc-Forms {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	text-align: center;
+}
+.doc-Form {
+	border: 5px solid #eef;
+	display: inline-block;
+	padding: 24px 30px;
+	text-align: left;
+	vertical-align: top;
+}
+.doc-Form:hover {
+	border-color: #dde;
+}
+.doc-Form + .doc-Form {
+	margin-left: 20px;
+}
+.doc-Form--rm {
+	border-color: #f00;
+}
+.doc-Form--rm:hover {
+	border-color: #c00;
+}
+.doc-Label,
+.doc-Submit {
+	cursor: pointer;
+}
+.doc-Label {
+	margin-top: 10px;
+	margin-left: .6em;
+}
+
+.doc-Blocks {
+	margin-top: 30px;
+	padding-left: 0;
+}
+.doc-Block {
+	display: block;
+}
+.doc-Block + .doc-Block {
+	margin-top: 1.5em;
+}
+.doc-Block__name {
+	border-bottom: 1px solid;
+	font-weight: bold;
+	margin-bottom: .5em;
+	padding-bottom: .25em;
+}
+.doc-Block__doc {
+	margin-bottom: .5em;
+}
+.doc-Block__doc *:first-child {
+	margin-top: 0;
+}
+.doc-Block__doc *:last-child {
+	margin-bottom: 0;
+}
+.doc-Block-demo {
+}
+.doc-Block-demo__trigger {
+	border-bottom: 1px dotted;
+	color: blue;
+	font-size: 75%;
+	text-decoration: none;
+}
+.doc-Block-demo__trigger:hover {
+	color: red;
+}
+.doc-Block-demo__content {
+	border: 1px solid;
+	display: none;
+	padding: 40px 50px;
+}

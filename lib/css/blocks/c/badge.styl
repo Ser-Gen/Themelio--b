@@ -1,0 +1,235 @@
+/* BLOCKS - BADGE
+---------------------------------------------------------------------*/
+
+/*doc
+
+### Badge
+
+Индикаторы событий, происшествий, совершённых действий.
+*/
+
+/*
+<span class="Badge"></span>
+*/
+
+.Badge,
+.BadgeTag,
+.BadgeTail,
+.BadgeText {
+	display: inline-block;
+}
+
+
+/*
+<div class="BadgeContainer">
+	<span class="Badge BadgeTag sizeS action">
+		<span class="BadgeTail"></span><span class="BadgeText">Акция</span>
+	</span>
+	<span class="Badge BadgeTag sizeS special">
+		<span class="BadgeTail"></span><span class="BadgeText">Спец<span class="cork">предложение</span></span>
+	</span>
+</div>
+*/
+
+.BadgeContainer .Badge {
+	margin-right: .4em;
+}
+.BadgeContainer .Badge:last-child {
+	margin-right: 0;
+}
+
+.BadgeTag {
+	cursor: default;
+	white-space: nowrap;
+}
+
+.BadgeTail {
+	/*background: url("/img/zakaz/interface/badge-tag_tails.png") no-repeat;*/
+	background: url("data:image/png;base64,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") no-repeat;
+	vertical-align: bottom;
+	white-space: normal;
+}
+
+.BadgeText {
+	border-radius: .3em;
+	line-height: 1;
+}
+.BadgeTail + .BadgeText {
+	border-radius: 0;
+	border-top-right-radius: .3em;
+	border-bottom-right-radius: .3em;
+}
+
+.BadgeTag.outline .BadgeText {
+	border: 1px solid;
+}
+.BadgeTag.outline .BadgeTail + .BadgeText {
+	border-left: none;
+}
+
+.BadgeTag.action .BadgeText {
+	background-color: #d23d3d;
+	color: #fff;
+}
+.BadgeTag.outline.action .BadgeText {
+	background-color: transparent;
+	color: #d23d3d;
+}
+.BadgeTag.special .BadgeText {
+	background-color: #4f98d6;
+	color: #fff;
+}
+.BadgeTag.novelty .BadgeText {
+	background-color: #8ec062;
+	color: #fff;
+}
+.BadgeTag.pricefalling .BadgeText {
+	background-color: #f48840;
+	color: #fff;
+}
+
+
+.BadgeTag.sizeS .BadgeTail {
+	height: 18px;
+	width: 9px;
+}
+.BadgeTag.sizeS.outline .BadgeTail {
+	height: 17px;
+	width: 11px;
+}
+.BadgeTag.sizeS .BadgeText {
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 9px;
+	padding: 4px 6px 5px 4px;
+}
+.BadgeTag.sizeS.outline .BadgeText {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.BadgeTag.sizeS .BadgeText .cork {
+	display: none;
+}
+
+.BadgeTag.sizeS.action .BadgeTail {
+	background-position: 0 0;
+}
+.BadgeTag.sizeS.outline.action .BadgeTail {
+	background-position: 0 -52px;
+}
+.BadgeTag.sizeS.special .BadgeTail {
+	background-position: -14px 0;
+}
+.BadgeTag.sizeS.novelty .BadgeTail {
+	background-position: -28px 0;
+}
+.BadgeTag.sizeS.pricefalling .BadgeTail {
+	background-position: -42px 0;
+}
+
+
+.BadgeTag.sizeM .BadgeTail {
+	height: 24px;
+	width: 12px;
+}
+.BadgeTag.sizeM .BadgeText {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 6px 9px 6px 6px;
+}
+.BadgeTag.sizeM.outline .BadgeText {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.BadgeTag.sizeM.action .BadgeTail {
+	background-position: 0 -23px;
+}
+.BadgeTag.sizeM.outline.action .BadgeTail {
+	background-position: 0 -74px;
+}
+.BadgeTag.sizeM.special .BadgeTail {
+	background-position: -17px -23px;
+}
+.BadgeTag.sizeM.novelty .BadgeTail {
+	background-position: -34px -23px;
+}
+.BadgeTag.sizeM.pricefalling .BadgeTail {
+	background-position: -51px -23px;
+}
+
+
+.BadgeTag.sizeL .BadgeTail {
+	height: 24px;
+	width: 12px;
+}
+.BadgeTag.sizeL .BadgeText {
+	font-size: 18px;
+	font-weight: normal;
+	padding: 2px 8px 4px 5px;
+}
+.BadgeTag.sizeL.outline .BadgeText {
+	padding-top: 1px;
+	padding-bottom: 3px;
+}
+
+.BadgeTag.sizeL.action .BadgeTail {
+	background-position: 0 -23px;
+}
+.BadgeTag.sizeL.outline.action .BadgeTail {
+	background-position: 0 -74px;
+}
+
+
+/*
+<a href="#" class="Badge BadgeOutline planet">ОП</a>
+*/
+
+.BadgeOutline {
+	border: 1px solid;
+	border-radius: .3em;
+	color: #444;
+	cursor: default;
+	display: inline-block;
+	font-size: 8px;
+	font-weight: bold;
+	line-height: 8px;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+a.BadgeOutline {
+	cursor: pointer;
+}
+
+.BadgeOutline.planet {
+	color: #d23d3d;
+}
+.BadgeOutline.zakaz {
+	color: #2095ca;
+}
+
+.BadgeOutline.giftCount {
+	color: #429600;
+	font-size: 10px;
+	line-height: 9px;
+	padding: 3px 5px;
+}
+
+
+
+/* Если бирка с выпадающим при наведении блоком — она должна становиться прозрачней и иметь вопрошающий курсор */
+
+.BadgeTag.Bubble.onHover .BadgeTail,
+.BadgeTag.Bubble.onHover .BadgeText {
+	transition: opacity .1s ease-in-out;
+}
+.BadgeTag.Bubble.onHover:hover .BadgeTail,
+.BadgeTag.Bubble.onHover:hover .BadgeText {
+	cursor: help;
+	opacity: .75;
+}
+
+
+.BadgeTag .BubbleContent {
+	white-space: normal;
+}

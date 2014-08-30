@@ -1,0 +1,191 @@
+// Правильные темы для сайтов
+//
+// К стандартному файлу стилей подключается этот файл,
+// чтобы вырезать оттуда объявления функции
+//
+// В файле, который будет темой, указывается переменная $theme
+// с хеш-блоком параметров темы и подключается основной файл стилей:
+//
+// $theme = {
+//   'brand': '#efa119',
+//   'bHover': '#d48f16',
+//   'accent': '#ee5830',
+//   'aHover': '#d14f2c'
+// };
+//
+// @import 'main';
+//
+// Для требуемого свойства указывается желаемое значение,
+// при этом изменяемое значение подразумевается за переменной из хеш-блока
+//
+// Использование:
+// .lol {
+//   themes({
+//     'box-shadow':'0 0 brand'
+//     'color':'brand'
+//   })
+// }
+//
+// В функции используется самая простая автозамена,
+// поэтому не используйте ключи, имя которых состоит из имён других
+//
+// Пример:
+//
+// $theme = {
+//   'brand': '#efa119',
+//   'brand--hover': '#d48f16'
+// };
+//
+// В этой ситуации будет заменятся текст `brand` в `brand--hover`
+
+// если строим файл темы
+if $theme is defined {
+
+	// обнуляем все обычные свойства
+	// список свойств можно увидеть, например, здесь — https://github.com/csscomb/csscomb.js/blob/master/config/csscomb.json
+	
+	animation() {}
+	-webkit-appearance() {}
+
+	background() {}
+	background-color() {}
+	background-image() {}
+	background-position() {}
+	background-repeat() {}
+	background-size() {}
+
+	border() {}
+	border-collapse() {}
+	border-color() {}
+
+	border-radius() {}
+	border-top-right-radius() {}
+	border-top-left-radius() {}
+	border-bottom-right-radius() {}
+	border-bottom-left-radius() {}
+
+	border-spacing() {}
+	border-style() {}
+	border-width() {}
+	border-top() {}
+	border-top-color() {}
+	border-right() {}
+	border-right-color() {}
+	border-bottom() {}
+	border-bottom-color() {}
+	border-left() {}
+	border-left-color() {}
+
+	box-shadow() {}
+	-webkit-box-sizing() {}
+	-moz-box-sizing() {}
+	box-sizing() {}
+	break-before() {}
+	break-inside() {}
+	clear() {}
+	clip() {}
+	color() {}
+	columns() {}
+	content() {}
+	cursor() {}
+	display() {}
+	fill() {}
+	flex-grow() {}
+	float() {}
+	font() {}
+	font-family() {}
+	font-size() {}
+	-webkit-font-smoothing() {}
+	font-style() {}
+	font-variant() {}
+	font-weight() {}
+	height() {}
+	max-height() {}
+	min-height() {}
+	letter-spacing() {}
+	line-height() {}
+	list-style-type() {}
+
+	mask() {}
+	-webkit-mask-image() {}
+
+	margin() {}
+	margin-top() {}
+	margin-right() {}
+	margin-bottom() {}
+	margin-left() {}
+
+	opacity() {}
+	outline() {}
+	overflow() {}
+	overflow-y() {}
+
+	padding() {}
+	padding-top() {}
+	padding-right() {}
+	padding-bottom() {}
+	padding-left() {}
+
+	-webkit-column-break-before() {}
+	page-break-before() {}
+	-webkit-column-break-inside() {}
+	page-break-inside() {}
+
+	position() {}
+	top() {}
+	right() {}
+	bottom() {}
+	left() {}
+
+	quotes() {}
+	resize() {}
+	speak() {}
+	src() {}
+	text-align() {}
+	text-decoration() {}
+	text-indent() {}
+	-ms-text-overflow() {}
+	text-overflow() {}
+	-webkit-text-size-adjust() {}
+	-ms-text-size-adjust() {}
+	text-shadow() {}
+	text-transform() {}
+
+	-webkit-tap-highlight-color() {}
+	-webkit-touch-callout() {}
+
+	transition() {}
+	transition-duration() {}
+	transition-delay() {}
+
+	user-select() {}
+	transform() {}
+	transform-origin() {}
+	vertical-align() {}
+	visibility() {}
+	white-space() {}
+	width() {}
+	max-width() {}
+	min-width() {}
+	word-wrap() {}
+	z-index() {}
+}
+
+themer($hash) {
+	if $theme is defined {
+		for $theme-prop,$theme-param in $theme {
+			for $prop, $param in $hash {
+				if match($theme-prop, $param) {
+
+					// восстанавливаем поведение свойств
+
+					define($prop, @() {
+						{$prop} : arguments
+					})
+					
+					{$prop} : unquote(replace($theme-prop, $theme[$theme-prop], $param))
+				}
+			}
+		}
+	}
+}

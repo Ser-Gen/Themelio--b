@@ -1,0 +1,582 @@
+/* BLOCKS - FORMS
+---------------------------------------------------------------------*/
+
+/*
+<form class="Form">
+	<div class="Form__field">
+		<label>
+			<input type="text">
+			Напишите что-нибудь
+		</label>
+	</div>
+</form>
+*/
+
+.Form__field {
+	margin-top: $lineHeight;
+	position: relative;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+	&.ib {
+		display: inline-block;
+		margin-top: 0;
+	}
+}
+
+
+/*
+<form action="#" class="FormSearch headerSearch">
+	<button class="FormSearch__submit" type="submit"><span class="textHide Icon enterBtn">Найти</span></button>
+	<label class="FormSearch__wrapper"><input class="FormSearch__field" type="text"><span class="Icon search"></span></label>
+</form>
+*/
+
+.FormSearch {
+	position: relative;
+	width: 100%;
+}
+.FormSearch__wrapper {
+	display: block;
+}
+.FormSearch__field {
+	width: 100%;
+}
+.FormSearch__submit {
+	float: right;
+}
+
+
+/*
+<form action="" class="Form Form--complex m-b-1">
+	<input type="text" name="" id="" class="Form__object--fillspace">
+	<button class="Btn--default Form__object--fillspace-gap">Найти</button>
+</form>
+*/
+
+.Form--complex {
+	display: flex;
+}
+.Form__object--fillspace {
+	flex-grow: 1; /* элемент будет стараться занять всё пространство, оставшиеся от других элементов, размер которых задаётся исходя из их значения `display` */
+ 
+	& + .Form__object--fillspace-gap { margin-left: .5em; }
+}
+
+
+/*
+<label class="FieldFile">
+	<span class="FieldFile__trigger">
+		Загрузить
+		<span class="FieldFile__wrapper">
+			<input type="file" class="FieldFile__input" />
+		</span>
+	</span>
+</label>
+*/
+
+.FieldFile {
+	display: inline-block;
+}
+.FieldFile__trigger {
+	position: relative;
+}
+.FieldFile__wrapper {
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.FieldFile__input {
+	cursor: pointer;
+	font-size: 48em;
+	height: auto;
+	left: -11.416666em;
+	if (!$ie) {
+		opacity: 0;
+		visibility: hidden;
+	} else {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+	position: absolute;
+	top: -.3em;
+	width: 12.5em;
+}
+
+
+
+/*doc
+
+## Формы
+
+Универсальная разметка для форм. Группы полей `Form__set` могут выделяться модификаторами `accent` (серый фон), `accent main` (жёлтый).
+
+Чтобы поле ввода заполняло всё доcтупное пространство, не влияя на подпись, нужен модификатор `w-full` у `Form__field`.
+
+Чтобы поле ввода заполняло всё пространство, подплывая под подпись, нужен модификатор `inputFull` у `Form__field`.
+
+У контейнера для 
+
+<form action="" class="Form">
+	<fieldset class="Form__set accent main">
+		<h4 class="Form__header">Общие сведения</h4>
+		<div class="Form__field">
+			<span class="Form__title"><label class="Form__label" for="id2">Имя:</label></span><div class="Form__group">
+				<div class="Form__field">
+					<input type="text" class="Form__input" id="id2" size="40" /><span class="icon remove"></span>
+				</div>
+				<div class="Form__field">
+					<input type="text" class="Form__input" id="id5" size="40" /><span class="icon remove"></span>
+				</div>
+				<div class="Form__field">
+					<span class="pseudoLink add">Добавить</span>
+				</div>
+			</div>
+		</div>
+		<div class="Form__field">
+			<span class="Form__title"><label class="Form__label" for="id4">Фамилия:</label></span><input type="text" class="Form__input" id="id4" size="40" />
+		</div>
+		<hr class="Form__divider" />
+		<div class="Form__field w-full">
+			<span class="Form__title"><label class="Form__label" for="id1">Длинная подпись для поля, чтобы аж скрылась:</label></span><input type="text" class="Form__input" id="id1" size="40" />
+		</div>
+	</fieldset>
+
+	<fieldset class="Form__set accent">
+		<h4 class="Form__header">Общие сведения</h4>
+		<div class="Form__field inputFull">
+			<span class="Form__title"><label class="Form__label" for="id3">Комментарий:</label></span><textarea class="Form__input" name="" id="id3" cols="30" rows="10"></textarea>
+		</div>
+	</fieldset>
+
+	<fieldset class="Form__set">
+		<button class="but green">Сохранить документ</button>
+	</fieldset>
+</form>
+
+
+<script>
+$(document).ready(function () {
+
+// псевдонаведение для связанных полей ввода
+$('.Form__label').hover(
+	function () {
+		if ($(this).attr('for')) {
+			$('#'+ $(this).attr('for')).addClass('hover');
+		}
+	},
+	function () {
+		if ($(this).attr('for')) {
+			$('#'+ $(this).attr('for')).removeClass('hover');
+		}
+	}
+)
+
+// добавление новой строки
+$('.Form .pseudoLink.add').click(function () {
+	$(this).parent('.Form__field').before('<div class="Form__field"><input type="text" class="Form__input" size="40" /><span class="icon remove"></span></div>')
+})
+
+// удаление строки
+$('.Form__group .icon.remove').live('click', function () {
+	$(this).parent('.Form__field').remove();
+})
+
+})
+</script>
+*/
+
+.Form {
+	font-size: 14px;
+}
+
+.Form__set {
+	border: 0;
+	margin-top: 1em;
+	padding: 0;
+	
+	&.buttonSet {
+		border-top: 1px dotted #bababa;
+		padding-top: 10px;
+	}
+}
+.Form__set:first-child {
+	margin-top: 0;
+}
+
+.Form__header {
+	border-bottom: 1px solid rgba(0,0,0,.15);
+	font-size: inherit;
+	margin-top: 0;
+	margin-bottom: 1.5em;
+	padding-bottom: .75em;
+}
+
+.Form__field {
+	min-height: 1.4em;
+	margin-top: 1em;
+	margin-left: 230px;
+	position: relative;
+}
+.Form__field:first-child {
+	margin-top: 0;
+}
+.Form__field .Form__field {
+	margin-left: 0;
+}
+
+.Form__divider {
+	box-sizing: content-box;
+	border: 0;
+	border-top: 1px solid rgba(0,0,0,.15);
+	margin-top: 1em;
+}
+
+.Form__label {
+	cursor: pointer;
+	padding-top: .05em;
+	padding-bottom: .05em;
+}
+
+.Form__title {
+	color: rgba(0,0,0,.75);
+	display: inline-block;
+	line-height: 1.2em;
+	margin-right: 10px;
+	padding-top: 8px;
+	padding-bottom: 5px;
+	position: relative;
+	text-align: right;
+	vertical-align: top;
+	width: 220px;
+	height: 1em;
+	margin-left: -(220px) - (10px);
+	
+	&.hiddenTitle {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	&:hover {
+		overflow: visible;
+		white-space: normal;
+	}
+}
+
+.Form__input {
+	border: 1px solid #d9d9d9;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 0;
+	padding: 5px;
+	width: 100%;
+	
+	&:hover,
+	&.hover,
+	&:focus {
+		border-color: #ababab;
+	}
+}
+select.Form__input {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+textarea.Form__input {
+	resize: vertical;
+}
+.Form__input + .Form__input {
+	vertical-align: top;
+}
+.Form__input.w-300 {
+	width: 300px;
+}
+
+.Form__group {
+	display: inline-block;
+	margin-bottom: .75em;
+	width: 100%;
+}
+
+.Form .pseudoLink.add {
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	color: #7c7c7c;
+}
+.Form__field:first-child .pseudoLink.add {
+	position: relative;
+	top: 5px;
+}
+.Form .pseudoLink.add:hover {
+	color: #4c4c4c;
+}
+
+.Form__field .icon.remove {
+	cursor: pointer;
+	margin-left: .4em;
+}
+.Form__field .icon.remove:hover {
+	background-position: 0 -71px;
+}
+
+
+.Form__set.accent,
+.Form__set.accent .Form__label {
+	background-color: #f0f0f0;
+}
+.Form__set.accent {
+	padding: 15px;
+}
+
+.Form__set.accent.main,
+.Form__set.accent.main .Form__label {
+	background-color: #f4f0d2;
+}
+
+
+.Form__field.w-full .Form__input {
+	width: 100%;
+}
+
+.Form__field.inputFull {
+	display: block;
+	margin-left: 0;
+}
+.Form__field.inputFull .Form__title {
+	margin-bottom: .5em;
+	margin-left: 0;
+	position: static;
+	text-align: left;
+}
+.Form__field.inputFull .Form__input {
+	width: 100%;
+}
+
+
+.Form__field.error .Form__title,
+.Form__title.error {
+	color: $errorColor;
+}
+.Form__field.error .Form__input,
+.Form__input.error {
+	border-color: $errorColor;
+}
+.Form__error {
+	color: $errorColor;
+	display: block;
+	font-size: .86em;
+	left: 0;
+	margin-top: 5px;
+	width: 100%;
+}
+
+
+/*doc
+<div class="Checkbox">
+	<input type="checkbox" checked="" value="yes" name="check" id="check1" class="Checkbox__input">
+	<label for="check1" class="Checkbox__label">
+		<span class="Checkbox__button"></span><span class="Checkbox__text">Vintage street-art capitalism sriracha whatever</span>
+	</label>
+</div>
+*/
+
+.Checkbox {
+	display: inline-block;
+	margin-right: 1.5em;
+}
+.Checkbox__label {
+	display: inline-block;
+	padding-left: 20px;
+}
+if (!$ie) {
+	.Checkbox__input {
+		@extend .hideSr;
+	}
+	.Checkbox__button {
+		@extend .v-a-m-true;
+		margin-x: 7px -20px;
+		size: 13px;
+		background-color: #ebebeb;
+		border: 1px solid #a6a6a6;
+		cursor: pointer;
+		display: inline-block;
+		
+		.Checkbox__input:checked + &,
+		&--checked {
+			background-color: #777;
+		}
+	}
+} else {
+	.Checkbox__input {
+		margin-x: 7px -20px;
+	}
+}
+
+
+/*doc
+
+<div class="Radio">
+	<input type="radio" id="radio1" class="Radio__input">
+	<label for="radio1" class="Radio__label">
+		<span class="Radio__button"></span><span class="Radio__text">Радиобатон</span>
+	</label>
+</div>
+*/
+
+.Radio {
+	@extend .Checkbox;
+}
+.Radio__label {
+	@extend .Checkbox__label;
+}
+if (!$ie) {
+	.Radio__input {
+		@extend .hideSr;
+	}
+	.Radio__button {
+		@extend .v-a-m-true;
+		@extend .Checkbox__button;
+		border-radius: 50%;
+		
+		.Radio__input:checked + &,
+		&--checked {
+			background-color: #777;
+		}
+	}
+} else {
+	.Radio__input {
+		margin-x: 7px -20px;
+	}
+}
+
+
+/*doc
+
+<div class="Select">
+	<label class="Select__label">
+		<select class="Select__select" data-placeholder="Выберите нужное">
+			<option>Вариант первый</option>
+			<option>Вторая возможность</option>
+			<option>Третья опция</option>
+			<option>Кейс четвёртый</option>
+		</select>
+		<span class="Select__text">Пожалуйста, выберите</span>
+	</label>
+</div>
+*/
+
+.Select {
+	overflow: hidden;
+	max-width: 100%;
+
+	&__label {
+		display: block;
+		position: relative;
+	}
+
+	&__select {
+		absolute: bottom 0 left 0;
+		box-sizing: border-box;
+		right: 0;
+		height: 100%;
+		if (!$ie) {
+			opacity: 0;
+		} else {
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		}
+		width: 100%;
+		z-index: 2;
+	}
+
+	&__text {
+		display: block;
+		min-height: $lineHeight + .75em;
+		overflow: hidden;
+		padding-right: 30px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		
+		&:after {
+			absolute: top 14px right 10px;
+			border-color: #777 transparent transparent;
+			border-style: solid;
+			border-width: 6px;
+			content: "";
+		}
+
+		&.placeholder {
+			color: $infoColor;
+		}
+	}
+
+	&__select:hover + &__text:after {
+		border-top-color: #999;
+	}
+}
+
+
+/*doc
+
+<div class="Range">
+	<div class="Range__group">
+		<div class="Range__box">
+			<input class="Range__field" type="text" name="" id="" value="0">
+		</div>
+		<div class="Range__box divider">&mdash;</div>
+		<div class="Range__box">
+			<input class="Range__field" type="text" name="" id="" value="1000">
+		</div>
+	</div>
+	<div class="Range__bar">
+		<div class="Range__selected"></div>
+		<div class="Range__handle left"></div>
+		<div class="Range__handle right"></div>
+	</div>
+</div>
+*/
+
+.Range {}
+
+.Range__group {
+	@extend .PseudoTable;
+	width: 100%;
+}
+.Range__box {
+	@extend .PseudoTable__cell;
+}
+.Range__box.divider {
+	padding-x: .75em;
+	text-align: center;
+}
+.Range__field {
+	width: 100%;
+}
+
+.Range__bar {
+	border: 1px solid;
+	cursor: pointer;
+	position: relative;
+}
+.Range__handle {
+	absolute: top 50%;
+	cursor: move;
+	cursor: grab;
+
+	&:active,
+	&.active {
+		cursor: grabbing;
+	}
+}
+.Range__handle.left {
+	left: 0;
+}
+.Range__handle.right {
+	right: 0;
+}
+
+.Range__group + .Range__bar {
+	margin-top: 1em;
+}

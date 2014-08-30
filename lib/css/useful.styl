@@ -1,0 +1,290 @@
+/*!
+	
+	USEFUL
+ 
+ */
+
+
+/* USEFUL
+---------------------------------------------------------------------*/
+
+/* предотвращает схлопывание элемента, если в нём есть плавающие */
+.group {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+/* альтернативный способ */
+.groupIB {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100%;
+}
+
+
+.hideAway {
+	left: -9999px;
+	position: absolute;
+	top: -9999px;
+	visibility: hidden;
+}
+@css {
+	.hideAway\! {
+		left: -9999px !important;
+		position: absolute !important;
+		top: -9999px !important;
+		visibility: hidden !important;
+	}
+}
+
+.hideAway--clear {
+	left: auto;
+	position: static;
+	top: auto;
+	visibility: visible;
+}
+@css {
+	.hideAway--clear\! {
+		left: auto !important;
+		position: static !important;
+		top: auto !important;
+		visibility: visible !important;
+	}
+}
+
+.hideSr {
+	border: 0;
+	clip: rect(0,0,0,0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+
+/* грамотное выравнивание */
+.v-a-m-true {
+	margin-top: -.17em;
+	vertical-align: middle;
+}
+
+.v-a-m-tranY {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+img[align="left"],
+.align-left {
+	float: left;
+	margin-right: .75em;
+}
+img[align="right"],
+.align-right {
+	float: right;
+	margin-left: .75em;
+}
+
+
+/* изображение растягивается на всю ширину контейнера, не искажаясь */
+.imgFill {
+	height: auto;
+	width: 100%;
+}
+
+
+/* предзагрузка изображений */
+/*
+<button>
+<span class="Icon order imgPreload imgPreloadLoading"></span>
+Купить
+</button>
+*/
+
+.imgPreload {
+	&:after {
+		content: '';
+		display: inline;
+	}
+}
+.imgPreloadLoading:after,
+.Btn.loading .Icon {
+	background: url(/img/icons/loading.gif);
+}
+
+
+/*
+<label for="input">Заголовок</label>
+<input id="input" type="text" />
+*/
+
+.fieldRequired {
+
+	&:after {
+		color: red;
+		content: '*';
+		font-weight: bold;
+		margin-left: .3em;
+	}
+
+	+ielte7() {
+		background-color: #fdd;
+		display: inline;
+		min-height: 1em;
+		min-width: 1em;
+		zoom: 1;
+	}
+}
+
+
+/* скрытие элементов, нуждающихся в джс, класс для модернизра */
+.isNeedsJS {
+	opacity: 0;
+	visibility: hidden;
+	
+	.has-js & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+
+/* скрытие текста в элементе */
+.textHide {
+	border: 0;
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	
+	+ielte7() {
+		text-indent: -9999px; /* проблема: строчно-блоковые элементы улетают */
+	}
+}
+
+.textHideAway {
+	text-indent: -9999px;
+}
+
+
+/* невыделяемый текст */
+.noUserSelect {
+	user-select: none;
+	
+	&::selection { color: inherit }
+}
+
+/* отключение всплытия информации о ссылке при долгом нажатии на ней, http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#/apple_ref/css/property/-webkit-touch-callout */
+.noTouchCallout {
+	-webkit-touch-callout: none;
+}
+
+/* https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html */
+/* аналог для ИЕ10 на ВинФон8 — http://blogs.windows.com/windows_phone/b/wpdev/archive/2012/11/15/adapting-your-webkit-optimized-site-for-internet-explorer-10.aspx */
+.noTapHighlight {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* верхний регистр с разрядкой */
+.textUppercase {
+	font-size: .875em;
+	letter-spacing: .1em;
+	margin-right: -.1em;
+	text-transform: uppercase;
+}
+
+/* полупробел */
+/* аналог в хтмл — `&#8198;` [отсюда](http://stackoverflow.com/a/8515417) */
+/* неразрывный вариант — `&#8239;` [отсюда](http://en.wikipedia.org/wiki/Non-breaking_space) */
+/* символьные аналоги могут не отображаться в некоторых системах, поэтому: */
+/*
+<span class="halfSpace">&nbsp;</span>
+*/
+.textHalfSpace {
+	font-size: 50%;
+	line-height: 1;
+}
+
+
+/*doc
+
+### .TextFade
+
+Плавное опрозрачнивание однострочного текста
+
+Не работает в опере 12, в ИЕ скрывается троеточиями (где возможно)
+*/
+
+.TextFade {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	-webkit-mask-image: -webkit-linear-gradient(right,transparent 0,#000 3em);
+	mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxtYXNrIGlkPSJmYWRlLW1hc2siIG1hc2tDb250ZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48bGluZWFyR3JhZGllbnQgaWQ9ImciPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiIG9mZnNldD0iLjgiLz48c3RvcCBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiIG9mZnNldD0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnKSIvPjwvbWFzaz48L3N2Zz4=#fade-mask");
+	-ms-text-overflow: ellipsis;
+}
+
+
+/*
+Скрытие текста обрезанием
+
+http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/
+
+```html
+<p class="Ellipsify"><span class="Ellipsify__text">Эксикатор разрушаем. Заиливание волнообразно. Очевидно, что надолба перемещает легкосуглинистый бур, вне зависимости от предсказаний теоретической модели явления. Латерит, как следует из полевых и лабораторных наблюдений, восстанавливает пахотный чернозём одинаково по всем направлениям.<span></p>
+```
+*/
+
+.Ellipsify {
+	height: $lineHeight * 4;
+	line-height: $lineHeight;
+	overflow: hidden;
+	
+	&:before {
+		content: "";
+		float: left;
+		height: $lineHeight * 4;
+		width: 5px;
+	}
+	&:after {
+		box-sizing: content-box;
+		content: "\02026";  
+		float: right; position: relative;
+		left: 100%;
+		margin-left: -1em;
+		padding-right: 5px;
+		text-align: right;
+		top: -($lineHeight);
+		width: 1em;
+	}
+}
+.Ellipsify__text {
+	float: right;
+	margin-left: -5px;
+	width: 100%;
+}
+
+
+
+.caret {
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid;
+	display: inline-block;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	width: 0;
+	
+	.Btn & {
+		margin-left: 0;
+	}
+}

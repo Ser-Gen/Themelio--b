@@ -1,0 +1,154 @@
+/* BLOCKS - LISTS
+---------------------------------------------------------------------*/
+
+ul.custom {
+	list-style-type: none;
+	
+	& > li:before {
+		cursor: default;
+		margin-right: .35em;
+		position: absolute;
+		right: 100%;
+		top: 0;
+	}
+	&.inside > li:before {
+		position: static;
+	}
+
+	&.dashed > li:before {
+		content: '\2014';
+		margin-right: .5em;
+	}
+}
+ul:lang(ru) {
+	@extend ul.custom;
+	
+	& > li:before {
+		@extend ul.custom > li:before;
+		@extend ul.custom.dashed > li:before;
+	}
+}
+
+ul.noBull {
+	padding-left: 0;
+	
+	li:before {
+		display: none;
+	}
+}
+
+
+/*doc
+<ul class="List">
+	<li class="List__item">Пункт меню, например</li>
+</ul>
+*/
+
+.List {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.List__item {
+	margin: 0;
+	
+	&:before {
+		display: none;
+	}
+}
+
+.List.ib {
+	& .List__item {
+		display: inline-block;
+	}
+}
+
+
+/*doc
+
+```js
+// добавление специального элемента-заглушки
+// для жесткого задания количества можно воспользоваться атрибутом data-cols у объекта
+if ($('.js-addListItemFake').length) {
+	$('.js-addListItemFake').each(function(){
+		var obj = $(this);
+		var dataCols = obj.attr('data-cols');
+		var dataClass = obj.attr('data-class');
+		var cols, classname;
+		if (dataCols && dataCols !== "") {
+			cols = dataCols;
+		} else {
+			cols = Math.floor(obj.width()/obj.children(':first').outerWidth());
+		}
+		if (dataClass && dataClass !== "") {
+			classname = dataClass;
+		} else {
+			classname = 'List__item';
+		}
+		for (var i = (cols - obj.children().length % cols) % cols; i > 0; i--) {
+			obj.append('<li class="'+ classname +' fake"></li> ');
+		}
+	});
+}
+// ~ добавление специального элемента-заглушки
+```
+*/
+
+.List.ib.justify {
+	text-align: justify;
+	
+	&:after {
+		content: "";
+		display: inline-block;
+		height: 1px;
+		width: 100%;
+	}
+	
+	& .List__item {
+		text-align: left;
+	}
+}
+
+.List.ib.separated {
+	
+	& .List__item {
+		
+		&:after {
+			content: "|";
+			cursor: default;
+			margin-left: .45em;
+			margin-right: .75em;
+			opacity: .75;
+		}
+		&.last:after {
+			content: none;
+		}
+	}
+}
+
+
+List(mods = '') {
+	@extend .List;
+	if (match('ib', mods)) {
+		@extend .List.ib;
+	}
+	if (match('justify', mods)) {
+		@extend .List.ib.justify;
+	}
+	if (match('separated', mods)) {
+		@extend .List.ib.separated;
+	}
+}
+List__item(mods = '') {
+	@extend .List__item;
+	if (match('ib', mods)) {
+		@extend .List.ib .List__item;
+	}
+	if (match('justify', mods)) {
+		@extend .List.ib.justify .List__item;
+	}
+	if (match('separated', mods)) {
+		@extend .List.ib.separated .List__item;
+	}
+}

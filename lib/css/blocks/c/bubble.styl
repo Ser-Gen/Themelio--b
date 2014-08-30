@@ -1,0 +1,253 @@
+/* BLOCKS - BUBBLE
+---------------------------------------------------------------------*/
+
+/*doc
+
+## Bubble
+
+Блок для реклизации разнообразных выпадающих меню и информационных заметок.
+
+Визаульная модификация:
+
+- направление: `top`, `right`, `bottom`, `left`
+- активация: `onHover` (по наведению), `onActive` (по нажатию)
+
+Элементы: Bubble__trigger (с ним нужно произвести действие, указанное в модификаторе активации) и Bubble__content (содержимое выпадающего слоя).
+
+<div class="Bubble top onHover">
+	<span class="Bubble__trigger"></span>
+	<div class="Bubble__content"></div>
+</div>
+*/
+
+.Bubble {
+	position: relative;
+	
+	&__trigger {}
+	
+	&__content {
+		background: #fff;
+		border: 1px solid #b3b3b3;
+		border-radius: .3em;
+		box-shadow: 0 3px 5px rgba(0,0,0,.2);
+		box-sizing: border-box;
+		display: none;
+		position: absolute;
+		z-index: 600;
+		
+		&:before {
+			content: "";
+			position: absolute;
+		}
+	}
+}
+
+
+.Bubble.top,
+.Bubble.bottom {
+	& .Bubble__content:before {
+		height: 12px;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.Bubble.top {
+	& .Bubble__content {
+		bottom: 100%;
+		margin-bottom: 10px;
+		
+		&:before {
+			/*background: url(/img/zakaz/interface/bubble_arrow_to-bottom.png) 0 0 no-repeat;*/
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAMAAAALbFwWAAAADFBMVEUAAADS0tKzs7P///+zPOldAAAAAXRSTlMAQObYZgAAACVJREFUeNo9x8ENAAAIwkDQ/Xc2pJG+rvI2a1yPcjWHOfwX9/ABHhAAfwt/5qwAAAAASUVORK5CYII=');
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			top: 100%;
+		}
+	}
+}
+
+.Bubble.bottom {
+	& .Bubble__content {
+		margin-top: 10px;
+		top: 100%;
+		
+		&:before {
+			/*background: url(/img/zakaz/interface/bubble_arrow_to-top.png) 0 100% no-repeat;*/
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAMAAAALbFwWAAAADFBMVEUAAADS0tKzs7P///+zPOldAAAAAXRSTlMAQObYZgAAACZJREFUeNpFx8kNAAAIwzAa9t+ZSyp5ObFBOCTemeI9Z++dfW1fAQ9wAH8pknNEAAAAAElFTkSuQmCC');
+			background-position: 50% 100%;
+			background-repeat: no-repeat;
+			bottom: 100%;
+		}
+	}
+}
+
+
+Bubble_right_left-content() {
+	box-shadow:
+		inset 0 0 0 3px #fff,
+		0 4px 8px rgba(0,0,0,.4);
+	top: 0;
+}
+Bubble_right_left-before() {
+	height: 100%;
+	top: 0;
+	width: 12px;
+}
+
+.Bubble.right {
+	& .Bubble__content {
+		left: 100%;
+		margin-left: 10px;
+		Bubble_right_left-content();
+		
+		&:before {
+			/*background: url(/img/interface/bubble_arrow_to-left.png) 0 0 no-repeat;*/
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQCAYAAADESFVDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGNJREFUeNqM0WEKwCAIhmHZ/c9QpJ0myrzRNzYYbNTK9/cDihItyjmj944tuJoCEYGq4mkLBsTMA/iglBJaa5h1gxgjaq34i0IIKKVg1UHetuPci7tP4D6m+y3uB7+hmeEUYACOECHRVsI0VAAAAABJRU5ErkJggg==');
+			background-position: 100% 50%;
+			background-repeat: no-repeat;
+			right: 100%;
+			Bubble_right_left-before();
+		}
+	}
+}
+
+.Bubble.left {
+	& .Bubble__content {
+		right: 100%;
+		margin-right: 10px;
+		Bubble_right_left-content();
+		
+		&:before {
+			/*background: url(/img/interface/bubble_arrow_to-right.png) 0 0 no-repeat;*/
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQCAYAAADESFVDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGpJREFUeNqckUsOwCAIRGnvfwfj5zaCuvA+U2m6alIwfUvyEmCGxhgopYAssOi92yIeWmvIOcOUTBEvVEwpwZQUEUGMEaakMDNCCLd46ODrqVorzTnppB121v073I3ADdOtxS3YFRaXAAMAX1wIkbfZ1AIAAAAASUVORK5CYII=');
+			background-position: 0 50%;
+			background-repeat: no-repeat;
+			left: 100%;
+			Bubble_right_left-before();
+		}
+	}
+}
+
+
+.Bubble.onHover,
+.Bubble.onActive {
+	& .Bubble__content {
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+
+		/* хром плохо анимирует текст элемента, если он не в отдельном слое */
+		transform: translateZ(0);
+		
+		/* анимируем с появлением */
+		transition:
+			opacity .1s ease-in-out,
+			visibility .1s linear;
+	}
+}
+
+
+Bubble_action() {
+	opacity: 1;
+	visibility: visible;
+	transition-duration: .05s;
+}
+
+.Bubble.onHover {
+	&.Bubble__trigger:hover .Bubble__content,
+	& .Bubble__trigger:hover + .Bubble__content,
+	& .Bubble__trigger + .Bubble__content:hover {
+		Bubble_action();
+	}
+	& .Bubble__content {
+		transition-delay: 0;
+	}
+	&.Bubble__trigger:hover .Bubble__content {
+		transition-delay: .15s;
+	}
+}
+.Bubble.onActive {
+	&.active .Bubble__content,
+	& .Bubble__trigger.active + .Bubble__content {
+		Bubble_action();
+	}
+}
+
+Bubble(mods) {
+	@extend .Bubble;
+	
+	if (match('top', mods)) {
+		@extend .Bubble.top;
+	}
+	if (match('right', mods)) {
+		@extend .Bubble.right;
+	}
+	if (match('bottom', mods)) {
+		@extend .Bubble.bottom;
+	}
+	if (match('left', mods)) {
+		@extend .Bubble.left;
+	}
+	if (match('onHover', mods)) {
+		@extend .Bubble.onHover;
+	}
+	if (match('onActive', mods)) {
+		@extend .Bubble.onActive;
+	}
+}
+
+
+
+/*
+<span class="Bubble bottom onActive BubbleSelect">
+	<span class="pseudoLink Bubble__trigger active">Самсон-опт</span>
+	<span class="Bubble__content BubbleSelect__list">
+		<a class="BubbleSelect__item active" data-site="sopt" href="#">Самсон-опт</a>
+		<a class="BubbleSelect__item" data-site="dks" href="#">ДКС</a>
+	</span>
+</span>
+*/
+
+.BubbleSelect__list {
+	display: block;
+	font-size: 14px;
+	padding: 5px;
+}
+.BubbleSelect__item {
+	border-radius: .3em;
+	color: #000;
+	cursor: pointer;
+	display: block;
+	padding: 3px;
+	text-decoration: none;
+	
+	&:hover {
+		background-color: #d4dadd;
+		color: #000;
+	}
+
+	&.active {
+		background-color: transparent;
+		cursor: default;
+		font-weight: bold;
+	}
+}
+.BubbleSelect.onActive {
+	& .Bubble__trigger:after {
+		/*background-image: url(bubble-menu_arrow_to-bottom.png);*/
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAFAgMAAADasT/ZAAAADFBMVEUAAABmZmYAVbXy9PU1amTcAAAAAXRSTlMAQObYZgAAACVJREFUCNdjCA1hWLWC4WoMw6s1DKYFDFYbGHgPMPAdYGBmACIAkycH85ORX8wAAAAASUVORK5CYII=') 0 50% no-repeat;
+		content: "";
+		display: inline-block;
+		height: 1em;
+		left: .3em;
+		margin-right: -7px;
+		position: relative;
+		vertical-align: middle;
+		width: 7px;
+		
+		&:hover {
+			background-position: 100% 50%;
+		}
+	}
+}

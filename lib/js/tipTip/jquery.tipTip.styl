@@ -1,0 +1,176 @@
+/* TipTip CSS - Version 1.2 */
+
+#tiptip_holder {
+	display: none;
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 9999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	box-sizing: border-box;
+	border-radius: 3px;
+	box-shadow: 0 0 3px #555;
+	font-size: 12px;
+	line-height: 1.4;
+	padding: 4px 8px;
+}
+#tiptip_holder.tip--black #tiptip_content {
+	background-color: rgb(25,25,25);
+	background-color: rgba(25,25,25,.92);
+	background-image: linear-gradient(transparent, #000);
+	border: 1px solid rgba(255,255,255,.25);
+	color: #fff;
+	text-shadow: 0 0 2px #000;
+}
+
+#tiptip_arrow,
+#tiptip_arrow_inner {
+	height: 0;
+	position: absolute;
+	width: 0;
+}
+
+#tiptip_holder.tip--black #tiptip_arrow,
+#tiptip_holder.tip--black #tiptip_arrow_inner {
+	border: 6px solid transparent;
+}
+
+#tiptip_holder.tip_top.tip--black #tiptip_arrow {
+	border-top-color: #fff;
+	border-top-color: rgba(255,255,255,.35);
+}
+
+#tiptip_holder.tip_bottom.tip--black #tiptip_arrow {
+	border-bottom-color: #fff;
+	border-bottom-color: rgba(255,255,255,.35);
+}
+
+#tiptip_holder.tip_right.tip--black #tiptip_arrow {
+	border-right-color: #fff;
+	border-right-color: rgba(255,255,255,.35);
+}
+
+#tiptip_holder.tip_left.tip--black #tiptip_arrow {
+	border-left-color: #fff;
+	border-left-color: rgba(255,255,255,.35);
+}
+
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+}
+
+#tiptip_holder.tip_top.tip--black #tiptip_arrow_inner {
+	border-top-color: rgb(25,25,25);
+	border-top-color: rgba(25,25,25,.92);
+}
+
+#tiptip_holder.tip_bottom.tip--black #tiptip_arrow_inner {
+	border-bottom-color: rgb(25,25,25);
+	border-bottom-color: rgba(25,25,25,.92);
+	margin-top: -5px;
+	margin-left: -6px;
+}
+
+#tiptip_holder.tip_right.tip--black #tiptip_arrow_inner {
+	border-right-color: rgb(25,25,25);
+	border-right-color: rgba(25,25,25,.92);
+	margin-top: -6px;
+	margin-left: -5px;
+}
+
+#tiptip_holder.tip_left.tip--black #tiptip_arrow_inner {
+	border-left-color: rgb(25,25,25);
+	border-left-color: rgba(25,25,25,.92);
+	margin-top: -6px;
+	margin-left: -7px;
+}
+
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {	
+	#tiptip_holder.tip--black #tiptip_content {
+		background-color: rgba(45,45,45,.88);
+		padding: 4px 8px 5px;
+	}
+	#tiptip_holder.tip_bottom.tip--black #tiptip_arrow_inner { 
+		border-bottom-color: rgba(45,45,45,.88);
+	}
+	#tiptip_holder.tip_top.tip--black #tiptip_arrow_inner { 
+		border-top-color: rgba(20,20,20,.92);
+	}
+}
+
+
+
+/* WHITE THEME
+------------------------------------------------------------------------------*/
+
+#tiptip_holder.tip--white #tiptip_arrow_inner {
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAASAgMAAAA8gvYNAAAADFBMVEUAAAD///+zs7PS0tJZ+3BbAAAAAXRSTlMAQObYZgAAAFFJREFUCNc1jbENgDAQA090EDEK41h0ESNQUjIKS2QU+owSF4700kv22YZduoEidWD5zxc6rVJ4OHxUto+GDdsYM4wuWOeLGCSBxFOW6gxldgDJFRuLVvEsPQAAAABJRU5ErkJggg==') no-repeat;
+}
+
+#tiptip_holder.tip_top.tip--white #tiptip_arrow {
+	border-top-color: rgba(25,25,25,.35);
+	bottom: -6px;
+}
+#tiptip_holder.tip_top.tip--white #tiptip_arrow_inner {
+	background-position: -6px 0;
+	border: 0;
+	height: 6px;
+	margin-top: -12px;
+	margin-left: 0;
+	width: 12px;
+}
+
+#tiptip_holder.tip_right.tip--white #tiptip_arrow_inner {
+	background-position: -18px -3px;
+	border: 0;
+	height: 12px;
+	left: 7px;
+	width: 6px;
+}
+
+#tiptip_holder.tip_bottom.tip--white #tiptip_arrow_inner {
+	background-position: -6px -12px;
+	border: 0;
+	height: 6px;
+	margin-top: 7px;
+	margin-left: 0;
+	width: 12px;
+}
+
+#tiptip_holder.tip_left.tip--white #tiptip_arrow_inner {
+	background-position: 0 -3px;
+	border: 0;
+	height: 12px;
+	left: -1px;
+	width: 6px;
+}
+
+#tiptip_holder.tip--white #tiptip_content {
+	background-color: #fafafa;
+	background-color: rgba(245,245,245,.97);
+	background-image: linear-gradient(#fff, #fafafa);
+	box-shadow: 0 7px 12px rgba(0,0,0,.15);
+	border: 1px solid #b3b3b3;
+	color: #000;
+}

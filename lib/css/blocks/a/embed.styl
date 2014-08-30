@@ -1,0 +1,21 @@
+/* BLOCKS - EMBEDDED
+---------------------------------------------------------------------*/
+
+/*doc
+<span class="Icon Icon--actions"></span>
+*/
+
+
+.Icon {
+	@extend .v-a-m-true;
+	background: url($iconsPath) -9999px -9999px no-repeat;
+	display: inline-block;
+	
+	a& {
+		text-decoration: none;
+	}
+	a &,
+	.withIcon & {
+		margin-right: .4em;
+	}
+}

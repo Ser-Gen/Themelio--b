@@ -1,0 +1,30 @@
+/* BLOCKS - EFFECTS
+---------------------------------------------------------------------*/
+
+/*doc
+
+Для реализации плавного поялвения и исчезания через цсс.
+Применять для абсолютно спозиционированных эелментов — элемент остаётся в потоке, но скрывается с помощью `visibility: hidden`.
+
+Регулировать скорость появления можно с помощью `transition-duration`/
+*/
+
+.FadeIn {
+	display: block;
+	opacity: 0;
+	visibility: hidden;
+
+	/* хром плохо анимирует текст элемента, если он не в отдельном слое */
+	transform: translateZ(0);
+	
+	/* анимируем с появлением */
+	transition:
+		opacity .1s ease-in-out,
+		visibility .1s linear;
+}
+
+.FadeIn--active {
+	opacity: 1;
+	visibility: visible;
+	transition-duration: .05s;
+}

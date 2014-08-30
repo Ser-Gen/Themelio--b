@@ -1,0 +1,55 @@
+@require '../../../../lib/css/blocks/a/List'
+
+$menu-name = '.Menu';
+$menu--tab-bg = #faa;
+
+.Menu {
+	List();
+	user-select: none;
+			
+	&__item {
+		List__item();
+		box-sizing: border-box;
+	}
+
+	&__text {
+		color: #000;
+		cursor: pointer;
+		display: block;
+		text-decoration: none;
+	}
+
+	&__item.active &__text {
+		cursor: default;
+	}
+
+	&--horiz {
+		List('ib');
+		{$menu-name}__item {
+			List__item('ib');
+		}
+	}
+
+	&--tab {
+		box-shadow: inset 0 -2px $menu--tab-bg;
+		
+		{$menu-name}__text {
+			background-color: $menu--tab-bg;
+			border-radius: .5em .5em 0 0;
+			padding: .5em .8em;
+			
+			&:hover {
+				background-color: lighten($menu--tab-bg, 25%);
+			}
+
+			&:active {
+				box-shadow: inset 0 0 .2em rgba(0,0,0,.3);
+			}
+		}
+
+		{$menu-name}__item.active {$menu-name}__text {
+			background-color: lighten($menu--tab-bg, 50%);
+			box-shadow: inset 0 0 .3em rgba(0,0,0,.3);
+		}
+	}
+}

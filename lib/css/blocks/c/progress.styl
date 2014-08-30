@@ -1,0 +1,137 @@
+/* BLOCKS - PROGRESS
+------------------------------------------------------------------------------*/
+
+/*doc
+
+## Progress
+
+Служит для индикации прогресса длительного процесса. По умолчанию занимает всю ширину контейнера.
+
+Визуальная модификация:
+
+- размер: `big`
+- цвет: `green`
+- скруглённость: `rounded`
+- псевдообъём: `fancy`
+- анимированность: `animated`
+
+<div class="Progress rounded fancy green big animated">
+	<div class="Progress__bar"><div class="Progress__done" style="width: 30%"><span class="Progress__title">30%</span></div></div>
+</div>
+
+*/
+
+.Progress,
+.Progress__bar,
+.Progress__done {}
+
+.Progress {
+	cursor: default;
+}
+
+.Progress__bar {
+	border: 1px solid;
+}
+
+.Progress__done {
+	background-color: #ddd;
+	border: 1px solid;
+	font-size: .75em;
+	min-height: 1em;
+	line-height: 1em;
+	margin: -1px 0 -1px -1px;
+	text-align: center;
+	transition: width .75s ease-in-out;
+	width: 0%;
+	max-width: 100%;
+}
+
+.Progress__title {
+	display: inline-block;
+	line-height: 1em;
+	padding: .1em;
+	vertical-align: middle;
+}
+
+.Progress.big {
+	& .Progress__done {
+		font-size: 1.25em;
+	}
+}
+
+Progress_round() {
+	border-radius: 1em;
+	min-width: 1em;
+}
+
+.Progress.rounded {
+	Progress_round();
+
+	& .Progress__bar,
+	& .Progress__done {
+		Progress_round();
+	}
+}
+.Progress.rounded.animated {
+	& .Progress__done:before {
+		Progress_round();
+	}
+}
+
+/* переделать на цсс */
+.Progress.animated {
+	& .Progress__done {
+		position: relative;
+		
+		&:before {
+			/* background-image: url("http://code.jquery.com/ui/1.10.2/themes/smoothness/images/animated-overlay.gif"); */
+			background-image: url("data:image/gif;base64,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");
+			content: "";
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: .1;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+	}
+
+	& .Progress__title {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+
+.Progress.fancy {
+	& .Progress__bar {
+		background-image: linear-gradient(#b5b5b5, #f3f3f3);
+	}
+
+	& .Progress__done {
+		background-image: linear-gradient(#fff, #ccc);
+		box-shadow: 0 .083em .25em rgba(0,0,0,.2);
+	}
+}
+
+.Progress.green {
+	& .Progress__done {
+		background-color: #c2e15d;
+		border-color: #679514;
+	}
+}
+
+.Progress.fancy.green {
+	& .Progress__bar {
+		border-color: #7a7a7a #bcbcbc #bcbcbc;
+	}
+	
+	& .Progress__done {
+		background-image: linear-gradient(#d7ef6a, #a9d14f);
+		box-shadow:
+			inset 0 1px 0 #ffffd8,
+			0 .083em .25em rgba(0,0,0,.2);
+	}
+}

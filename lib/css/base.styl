@@ -1,0 +1,450 @@
+/*!
+
+	BASE
+		BASE - ROOT
+		BASE - HTML5
+		BASE - EMBEDDED
+		BASE - FORMS
+		BASE - TABLES
+		BASE - LINKS
+		BASE - LISTS
+		BASE - TYPOGRAPHY
+ 
+ */
+
+
+
+/* BASE
+---------------------------------------------------------------------*/
+
+/* BASE - ROOT
+---------------------------------------------------------------------*/
+
+html {
+	font-size: 62.5%;
+	font-family: sans-serif;
+	overflow-y: scroll; /* убираем скачок из-за появляющейся полосы прокрутки */
+	-webkit-font-smoothing: antialiased; /* лучшее сглаживание шрифта в макоси */
+	
+	/* http://stackoverflow.com/questions/6210788/how-to-avoid-ios-automatic-font-size-adjustment — автоматическая настройка размеров текста у мобильных */
+	-webkit-text-size-adjust: 100%;
+	    -ms-text-size-adjust: 100%;
+}
+
+body {
+	line-height: 1.5;
+	margin: 0; /* Убираем внутренний отступ */
+}
+
+/* Текстовые выделения: убирается тень и добавляются цвета по умолчанию */
+::-moz-selection {
+	background-color: $selectionBG;
+	color: $selectionC;
+	text-shadow: none;
+}
+::selection {
+	background-color: $selectionBG;
+	color: $selectionC;
+	text-shadow: none;
+}
+
+[hidden], /* отсутствует в ИЕ789 */
+template { /* отсутствует в ИЕ, Сафари и ФФлт22 */
+	display: none;
+}
+
+
+
+/* BASE - HTML5
+---------------------------------------------------------------------*/
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+	display: block; /* исправляется отображение в ИЕ891011 и ФФ */
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block; /* исправляется отображение в ИЕ89 */
+  vertical-align: baseline; /* выравнивание в Хроме, ФФ и Опере */
+}
+
+audio:not([controls]) {
+	display: none; /* не отображать без элементов управления */
+	height: 0; /* убирается ненужная высота в аёс 5 */
+}
+
+
+
+/* BASE - EMBEDDED
+---------------------------------------------------------------------*/
+
+img {
+	border: 0; /* убирается граница, если изображение внутри ссылки в ИЕ89 */
+	vertical-align: middle; /* убирается отступ снизу */
+
+	+ielte7() {
+		-ms-interpolation-mode: bicubic; /* улучшение отображения при изменении размера */
+	}
+}
+
+svg:not(:root) {
+	overflow: hidden; /* отображение в ИЕ91011 */
+}
+
+figure {
+	margin: 0; /* ИЕ 789, Сафари 5, Опера 11 */
+}
+
+
+
+/* BASE - FORMS
+---------------------------------------------------------------------*/
+
+form {
+	+ielte7() {
+		margin: 0;
+	}
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+legend {
+	border: 0;
+	padding: 0;
+	white-space: normal;
+
+	+ielte7() {
+		margin-left: -7px;
+	}
+}
+
+label,
+input[type="checkbox"],
+input[type="radio"],
+button,
+select {
+	cursor: pointer;
+}
+html input[disabled],
+button[disabled],
+select[disabled] {
+	cursor: default;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	box-sizing: border-box;
+	color: inherit;
+  font: inherit;
+	margin: 0;
+	vertical-align: baseline;
+
+	+ielte7() {
+		vertical-align: middle;
+	}
+}
+
+button,
+input {
+	line-height: normal;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button {
+	overflow: visible; /* изначально значение `hidden` в ИЕ */
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button; /* отображение в аёс и андроид */
+	cursor: pointer;
+
+	+ielte7() {
+		overflow: visible; /* внутренний отступ */
+	}
+}
+
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box; /* правильные размеры для ИЕ */
+	padding: 0;
+	
+	/* правильное выравнивание по вертикали */
+	margin-top: -.17em;
+	vertical-align: middle;
+
+	+ielte7() {
+		height: 13px;
+		width: 13px;
+	}
+}
+
+/* исправление проблемы с отображением в Хроме */
+input[type="search"] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+}
+
+/* проблемы с отображением в Хроме и Сафари */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto; /* теперь должен отображаться верный курсор */
+}
+
+/* внутренний отступ в ФФ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/* выделение элементов при фокусе в Хроме */
+select:focus,
+button:focus,
+textarea:focus,
+input:focus {
+	outline: 0;
+}
+
+/* вертикальная полоса прокрутки в ИЕ */
+textarea {
+	overflow: auto;
+	resize: vertical;
+	vertical-align: top;
+}
+
+legend {
+	border: 0; /* правильный цвет не наследовался в ИЕ */
+	padding: 0;
+}
+
+optgroup {
+	font-weight: 700; /* жирность должна не наследоваться */
+}
+
+
+
+/* BASE - TABLES
+---------------------------------------------------------------------*/
+
+/* устранение отступов между ячейками */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td, th {
+	padding: 0;
+}
+
+
+
+/* BASE - LINKS
+---------------------------------------------------------------------*/
+
+a:focus {
+	outline: thin dotted; /* одинаковое выделение выбранных ссылок */
+}
+
+a:active,
+a:hover {
+	outline: 0; /* убираем выделение в других состояниях */
+}
+
+
+
+/* BASE - LISTS
+---------------------------------------------------------------------*/
+
+li ul,
+li ol {
+	margin: ($lineHeight / 3) 0 ($lineHeight / 3 * 2);
+}
+ul, ol, dl {
+	margin: 0 0 $lineHeight;
+}
+ul, ol {
+	padding: 0 0 0 1.5em;
+}
+li, dt, dd {
+	margin-top: ($lineHeight / 3);
+	padding-left: 0;
+	position: relative;
+}
+li:first-child,
+dt:first-child,
+dd:first-child {
+	margin-top: 0;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-left: 3em;
+}
+
+
+
+/* BASE - TYPOGRAPHY
+---------------------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 2em;
+	line-height: 1em;
+	margin: ($lineHeight / 2em) 0 ($lineHeight / 2em / 2);
+}
+
+h2 {
+	font-size: 1.5em;
+	line-height: ($lineHeight / 1.5em);
+	margin: ($lineHeight / 1.5em) 0 ($lineHeight / 1.5em / 2);
+}
+
+h3 {
+	font-size: 1.17em;
+	line-height: ($lineHeight / 1.17em);
+	margin: ($lineHeight / 1.17em) 0 ($lineHeight / 1.17em / 2);
+}
+
+h4 {
+	font-size: 1em;
+	line-height: ($lineHeight / 1em);
+	margin: ($lineHeight / 1em) 0 ($lineHeight / 1em / 2);
+}
+
+h5 {
+	font-size: .83em;
+	line-height: ($lineHeight / .83em);
+	margin: ($lineHeight / .83em) 0 ($lineHeight / .83em / 2);
+}
+
+h6 {
+	font-size: .67em;
+	line-height: ($lineHeight / .67em);
+	margin: ($lineHeight / .67em) 0 ($lineHeight / .67em / 2);
+}
+
+p,
+pre,
+blockquote {
+	font-size: 1em;
+	line-height: $lineHeight;
+	margin: 0 0 $lineHeight;
+}
+
+p + ul,
+p + ol,
+p + dl {
+	margin-top: (- $lineHeight / 2);
+}
+
+
+abbr[title] {
+	border-bottom: 1px dotted; /* стиль отсутствует в ИЕ 89, Сафари 5 и в Хроме */
+	cursor: help;
+}
+
+b, strong {
+	font-weight: 700;
+}
+
+i, em {
+	font-style: italic;
+}
+
+dfn {
+	font-style: italic; /* стиль отсутствует в Сафари 5 и Хроме */
+}
+
+/* в ФФ теперь не отличается */
+hr {
+	-moz-box-sizing: content-box;
+			 box-sizing: content-box;
+	height: 0;
+}
+
+/* стиль отсутствует в ИЕ 789 */
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+/* стиль отсутствует в Сафари 5 и Хроме */
+code, kbd, pre, samp {
+	font-family: monospace, sans-serif;
+	font-size: 1em;
+}
+
+pre {
+	overflow: auto; /* правильное поведение при переполнении */
+	white-space: pre-wrap; /* улучшает читаемость во всех браузерах */
+}
+
+/* кавычки для русского и английского языков */
+q:lang(en), .q.en {
+	quotes: "\201C" "\201D" "\2018" "\2019";
+}
+q:lang(ru), .q.ru {
+	quotes: '\00AB' '\00BB' '\201E' '\201C';
+}
+
+big {
+	font-size: 120%;
+}
+small {
+	font-size: 80%;
+}
+
+/* чтобы не влияли на высоту строки */
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -.5em;
+}
+sub {
+	bottom: -.25em;
+}

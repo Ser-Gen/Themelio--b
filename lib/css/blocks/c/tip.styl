@@ -1,0 +1,190 @@
+/* BLOCKS - TIP
+---------------------------------------------------------------------*/
+
+/*doc
+
+### Tip
+
+Всплывающие уведомления.
+
+Содержимое задаётся значением атрибута `data-cont`. Направление выпадения — классом `top`, `right`, `bottom` или `left`. Плавное появление классом `fade`.
+
+Требует поддержки [Псевдоэлементов](http://caniuse.com/#feat=css-gencontent) и [Трансформаций](http://caniuse.com/transforms2d). При желании можно в неподдерживающих убирать `data-cont`, а его значение присваивать `title`.
+
+Псевдоэлемент `:after` отвечает за стрелку-уголок, `:before` — содержимое.
+
+Перевод строки выполняется при помощи символа `&amp;#10;`.
+
+Пример: <a href="#" class="TipHolder top fade" data-cont="Звонок платный">+7 495 212-85-06</a>
+
+```html
+<!-- для вставки всплывающего изображения -->
+style{#TipHolderContent1:before { content: url(http://placekitten.com/200/300); }}
+<a href="#" class="TipHolder top" id="TipHolderContent1">+7 495 212-85-06</a>
+```
+*/
+
+Tip_BG = Tip_BG is defined ? Tip_BG : rgba(0,0,0,.9);
+Tip_Color = Tip_Color is defined ? Tip_Color : #fff;
+Tip_ArrowSize = 6px;
+
+
+.Tip,
+.TipHolder:before {
+	display: inline-block;
+	text-decoration: none;
+	white-space: pre;
+}
+
+.Tip,
+.TipHolder {
+	position: relative;
+}
+
+.TipHolder:before {
+	content: attr(data-cont);
+	cursor: default;
+}
+
+.TipHolder:before,
+.TipHolder:after {
+	visibility: hidden;
+}
+
+.TipHolder:hover:before,
+.TipHolder:hover:after {
+	visibility: visible;
+}
+
+.TipHolder.fade:before,
+.TipHolder.fade:after {
+	opacity: 0;
+	
+	transition:
+		opacity .1s ease-in-out .05s,
+		visibility .1s linear .05s;
+}
+.TipHolder.fade:hover:before,
+.TipHolder.fade:hover:after {
+	opacity: 1;
+	transition-duration: .05s;
+}
+
+.Tip,
+.TipHolder:before {
+	background: Tip_BG;
+	border-radius: .5em;
+	box-shadow: 0 .2em .3em rgba(0,0,0,.4);
+	color: Tip_Color;
+	
+	/* нельзя использовать относительные величины из-за Хрома */
+	/* ну и ладно */
+	padding: .5em .75em;
+}
+.Tip:after,
+.TipHolder:after {
+	color: Tip_BG;
+}
+
+.Tip:after,
+.TipHolder:after {
+	content: "";
+	height: 0;
+	width: 0;
+}
+
+.Tip:after,
+.TipHolder:before,
+.TipHolder:after {
+	position: absolute;
+}
+
+
+.Tip.top:after,
+.TipHolder.top:before,
+.TipHolder.top:after,
+.Tip.bottom:after,
+.TipHolder.bottom:before,
+.TipHolder.bottom:after {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.TipHolder.top:before,
+.TipHolder.top:after {
+	bottom: 100%;
+}
+.Tip.top:after,
+.TipHolder.top:after {
+	border-top: Tip_ArrowSize solid;
+	border-left: Tip_ArrowSize solid transparent;
+	border-right: Tip_ArrowSize solid transparent;
+}
+.Tip.top:after {
+	bottom: -(Tip_ArrowSize);
+}
+.TipHolder.top:before {
+	margin-bottom: (Tip_ArrowSize - 1px);
+}
+
+.TipHolder.bottom:before,
+.TipHolder.bottom:after {
+	top: 100%;
+}
+.Tip.bottom:after,
+.TipHolder.bottom:after {
+	border-bottom: Tip_ArrowSize solid;
+	border-left: Tip_ArrowSize solid transparent;
+	border-right: Tip_ArrowSize solid transparent;
+}
+.Tip.bottom:after {
+	top: -(Tip_ArrowSize);
+}
+.TipHolder.bottom:before {
+	margin-top: (Tip_ArrowSize - 1px);
+}
+
+
+.Tip.left:after,
+.TipHolder.left:before,
+.TipHolder.left:after,
+.Tip.right:after,
+.TipHolder.right:before,
+.TipHolder.right:after {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.TipHolder.left:before,
+.TipHolder.left:after {
+	right: 100%;
+}
+.Tip.left:after,
+.TipHolder.left:after {
+	border-left: Tip_ArrowSize solid;
+	border-top: Tip_ArrowSize solid transparent;
+	border-bottom: Tip_ArrowSize solid transparent;
+}
+.Tip.left:after {
+	right: -(Tip_ArrowSize);
+}
+.TipHolder.left:before {
+	margin-right: (Tip_ArrowSize - 1px);
+}
+
+.TipHolder.right:before,
+.TipHolder.right:after {
+	left: 100%;
+}
+.Tip.right:after,
+.TipHolder.right:after {
+	border-right: Tip_ArrowSize solid;
+	border-top: Tip_ArrowSize solid transparent;
+	border-bottom: Tip_ArrowSize solid transparent;
+}
+.Tip.right:after {
+	left: -(Tip_ArrowSize);
+}
+.TipHolder.right:before {
+	margin-left: (Tip_ArrowSize - 1px);
+}

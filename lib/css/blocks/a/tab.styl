@@ -1,0 +1,45 @@
+/* BLOCKS — TABS
+---------------------------------------------------------------------- */
+
+/*doc
+
+### Вкладки
+
+Добавляет возможность группировки содержимого по вкладкам. Разметка отображающегося содержимого.
+
+```html
+<div class="Tab__wrapper main fill">
+	<ul class="Tab__list main">
+		<li class="Tab Tab--active">
+			<span class="Tab__text">Основное</span>
+		</li><li class="Tab">
+			<span class="Tab__text">Товары-участники</span>
+			<span class="Tab__info">(4&nbsp;532)</span>
+		</li><li class="Tab">
+			<span class="Tab__text">Описание</span>
+		</li>
+	</ul>
+	<div class="Tab__content">
+		Содержимое вкладки
+	</div>
+</div>
+```
+ */
+
+.Tab__wrapper {
+	width: 100%;
+}
+
+.Tab__list {
+	List();
+}
+
+.Tab {
+	@extend .noUserSelect;
+	List__item();
+	cursor: pointer;
+	display: inline-block;
+}
+.Tab--active {
+	cursor: default;
+}

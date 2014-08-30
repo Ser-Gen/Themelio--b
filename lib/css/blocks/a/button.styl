@@ -1,0 +1,38 @@
+/* BLOCKS - BUTTONS
+---------------------------------------------------------------------*/
+
+/*doc
+<a class="Btn Btn--default" href="#">Напомнить</a>
+<button class="Btn Btn--default Btn--main">Купить</button>
+<input class="Btn Btn--default Btn--main" type="submit" value="Применить">
+*/
+
+.Btn {
+	border: 0;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	font: inherit;
+	overflow: visible;
+	user-select: none;
+	
+	&:hover {
+		text-decoration: none;
+	}
+	&.big {
+		font-size: 1.25em;
+	}
+	&.small {
+		font-size: .75em;
+	}
+}
+
+
+.Btn--default {
+	@extend .Btn;
+	line-height: 1;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+}

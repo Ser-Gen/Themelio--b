@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>test</title>
+<link rel="stylesheet" href="http://ser-gen.github.io/source/!base_css/themelio.css" media="all">
+<link rel="stylesheet" href="jquery.tipTip.css">
+
+<style>
+
+body {
+	background-color: #f5f5f5;
+	font-size: 2em;
+	text-align: center;
+}
+
+.ex {
+	margin: 2em;
+}
+
+</style>
+
+<div class="ex">
+	<span class="js-tipTip" title="азаза" data-theme="white">Траляля</span>
+	<span class="js-tipTip" title="азаза">Траляля</span>
+</div>
+
+
+<script src="http://yandex.st/jquery/1.8.3/jquery.min.js"></script>
+<script src="jquery.tipTip.js"></script>
+<script>
+$(document).ready(function () {
+	$('.js-tipTip').each(function () {
+		$(this).tipTip();
+	})
+})
+</script>

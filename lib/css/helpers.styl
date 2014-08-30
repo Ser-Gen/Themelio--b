@@ -1,0 +1,109 @@
+/* HELPERS
+---------------------------------------------------------------------*/
+
+/* работа с отображением элемента */
+.d-n { display: none; }
+.d-i { display: inline; }
+.d-b { display: block; }
+.d-i-b { display: inline-block; }
+
+@css {
+	.d-n\! { display: none !important; }
+	.d-i\! { display: inline !important; }
+	.d-b\! { display: block !important; }
+	.d-i-b\! {	display: inline-block !important; }
+}
+
+.v-h { visibility: hidden; }
+.v-v { visibility: visible; }
+
+.op-0 { opacity: 0; }
+.op-1 { opacity: 1; }
+
+.ov-h { overflow: hidden; }
+.ov-v { overflow: visible; }
+
+
+
+/* отступы, кратные высоте строки в текстовых блоках */
+.m-t-0 { margin-top: 0; }
+.m-t-025 { margin-top: $lineHeight * .25; }
+.m-t-05 { margin-top: $lineHeight * .5; }
+.m-t-1 { margin-top: $lineHeight; }
+.m-t-15 { margin-top: $lineHeight * 1.5; }
+.m-t-2 { margin-top: $lineHeight * 2; }
+
+.m-r-0 { margin-right: 0; }
+.m-r-space { margin-right: .4em; }
+.m-r-word-s { margin-right: .8em; }
+.m-r-word-m { margin-right: 1.2em; }
+.m-r-word-l { margin-right: 2em; }
+
+.m-b-0 { margin-bottom: 0; }
+.m-b-025 { margin-bottom: $lineHeight * .25; }
+.m-b-05 { margin-bottom: $lineHeight * .5; }
+.m-b-1 { margin-bottom: $lineHeight; }
+.m-b-15 { margin-bottom: $lineHeight * 1.5; }
+.m-b-2 { margin-bottom: $lineHeight * 2; }
+
+.m-l-0 { margin-left: 0; }
+.m-l-space { margin-left: .4em; }
+.m-l-word-s { margin-left: .8em; }
+.m-l-word-m { margin-left: 1.2em; }
+.m-l-word-l { margin-left: 2em; }
+
+
+.fl-r { float: right; }
+.fl-l { float: left; }
+.fl-n { float: none; }
+
+
+.cl-b {	clear: both; }
+
+
+.w-0 { width: 0; }
+.w-full { width: 100%; }
+
+
+.v-a-t { vertical-align: top; }
+.v-a-m { vertical-align: middle; }
+.v-a-b { vertical-align: bottom; }
+
+
+/*
+http://caniuse.com/multicolumn
+https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts
+http://stackoverflow.com/questions/6424088/css-column-breaks
+*/
+
+.col-2 { columns: 2; }
+.col-3 { columns: 3; }
+
+/*
+про будущее http://dev.w3.org/csswg/css-break/
+В настоящем пока всех этих радостей нет, но что-то работает
+*/
+
+.breakBefore {
+	-webkit-column-break-before: always;
+						page-break-before: always; /* в ФФ могло работать, но нет */
+								 break-before: always; /* ИЕ10+, Опера 11.1—12.1 */
+}
+.noBreakInside {
+	-webkit-column-break-inside: avoid;
+						page-break-inside: avoid; /* ФФ */
+								 break-inside: avoid; /* ИЕ10+, Опера 11.1—12.1 */
+}
+
+
+.c-info, .c-gray { color: infoColor; }
+.c-error, .c-red { color: errorColor; }
+.c-success, .c-green { color: successColor; }
+
+.t-a-l { text-align: left; }
+.t-a-c { text-align: center; }
+.t-a-r { text-align: right; }
+
+.t-d-n { text-decoration: none; }
+
+.w-s-nw {	white-space: nowrap; }
