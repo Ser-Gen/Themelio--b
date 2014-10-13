@@ -121,6 +121,17 @@ img[align="right"],
 	background: url(/img/icons/loading.gif);
 }
 
+/*
+ * осеревание изображения
+ * http://www.karlhorky.com/2012/06/cross-browser-image-grayscale-with-css.html
+ * https://github.com/karlhorky/gray
+ */
+.grayscale {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale"); /* Firefox 10+ */
+  filter: gray; /* IE 6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+ */
+}
+
 
 /*
 <label for="input">Заголовок</label>
@@ -230,6 +241,17 @@ img[align="right"],
 	-webkit-mask-image: -webkit-linear-gradient(right,transparent 0,#000 3em);
 	mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxtYXNrIGlkPSJmYWRlLW1hc2siIG1hc2tDb250ZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48bGluZWFyR3JhZGllbnQgaWQ9ImciPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiIG9mZnNldD0iLjgiLz48c3RvcCBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiIG9mZnNldD0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnKSIvPjwvbWFzaz48L3N2Zz4=#fade-mask");
 	-ms-text-overflow: ellipsis;
+}
+
+
+/* вытягивание текста в одну строку и обрезание троеточием */
+.fillLine {
+	display: inline-block;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+	    text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
 }
 
 

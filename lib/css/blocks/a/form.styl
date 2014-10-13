@@ -292,7 +292,7 @@ textarea.Form__input {
 	vertical-align: top;
 }
 .Form__input.w-300 {
-	width: 300px;
+	max-width: 300px;
 }
 
 .Form__group {
@@ -300,6 +300,10 @@ textarea.Form__input {
 	margin-bottom: .75em;
 	width: 100%;
 }
+.Form__field .Form__field + .Form__field {
+	margin-top: .5em;
+}
+
 
 .Form .pseudoLink.add {
 	border-bottom: 1px dashed;
@@ -328,7 +332,7 @@ textarea.Form__input {
 	background-color: #f0f0f0;
 }
 .Form__set.accent {
-	padding: 15px;
+	padding: 15px 19px;
 }
 
 .Form__set.accent.main,
