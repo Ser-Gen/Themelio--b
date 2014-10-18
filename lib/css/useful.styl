@@ -279,10 +279,11 @@ http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/
 	&:after {
 		box-sizing: content-box;
 		content: "\02026";  
-		float: right; position: relative;
+		float: right;
 		left: 100%;
 		margin-left: -1em;
 		padding-right: 5px;
+		position: relative;
 		text-align: right;
 		top: -($lineHeight);
 		width: 1em;
@@ -295,7 +296,7 @@ http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/
 }
 
 
-
+/* добавление индикатора выпадаемости */
 .caret {
 	border-left: 4px solid transparent;
 	border-right: 4px solid transparent;
@@ -309,4 +310,34 @@ http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/
 	.Btn & {
 		margin-left: 0;
 	}
+}
+
+
+/* добавление внешних стрелок, удобно для ссылок со стрелками */
+.larr,
+.rarr {
+	position: relative;
+}
+.larr {
+	margin-left: 1.5em;
+}
+.rarr {
+	margin-right: 1.5em;
+}
+.larr:before,
+.rarr:after {
+	font-size: 1.2em;
+	line-height: 1em;
+	position: absolute;
+	top: 0;
+}
+.larr:before {
+	content: "\2190";
+	margin-right: .3em;
+	right: 100%;
+}
+.rarr:after {
+	content: "\2192";
+	left: 100%;
+	margin-left: .3em;
 }
