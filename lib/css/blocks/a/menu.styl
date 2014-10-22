@@ -19,12 +19,16 @@ $(document).on('click', '.MenuTab .Menu__item', function (e) {
 	e.preventDefault();
 
 	var obj = $(this);
-	var content = $('[data-tab--name="'+ obj.parents('.MenuTab').attr('data-tab--name') +'"]');
+	var content = $('.MenuTab__wrapper[data-tab--name="'+ obj.parents('.MenuTab').attr('data-tab--name') +'"]').eq(0);
+
+	if (obj.hasClass('active')) { return false }
 
 	if (content.length) {
 		var target = content.find('[data-tab--id="'+ obj.attr('data-tab--for') +'"]');
-		
-		$('.MenuTab__wrapper').animate({'height': target.height()}, 200);
+
+		content.animate({'height': target.height()}, 300, function () {
+			content.css('height','');
+		});
 		obj.addClass('active').siblings('.Menu__item').removeClass('active');
 		target.show().siblings('.MenuTab__content').hide();
 	};
