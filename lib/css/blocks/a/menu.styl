@@ -3,9 +3,9 @@
 
 /*
 <ul class="Menu Menu--horiz MenuTab" data-tab--name="test">
-	<li class="Menu__item" data-tab--for="0">
+	<li class="Menu__item" data-tab--id="0">
 		<a href="" class="Menu__label">Пункт 1</a>
-	</li><li class="Menu__item" data-tab--for="1">
+	</li><li class="Menu__item" data-tab--id="1">
 		<a href="" class="Menu__label">Пункт 2</a>
 	</li>
 </ul>
@@ -18,13 +18,16 @@
 $(document).on('click', '.MenuTab .Menu__item', function (e) {
 	e.preventDefault();
 
+	// у списка вкладок должен быть идентификатор `data-tab--name`, чтобы связать его со списком содержимого
 	var obj = $(this);
 	var content = $('.MenuTab__wrapper[data-tab--name="'+ obj.parents('.MenuTab').attr('data-tab--name') +'"]').eq(0);
 
 	if (obj.hasClass('active')) { return false }
 
 	if (content.length) {
-		var target = content.find('[data-tab--id="'+ obj.attr('data-tab--for') +'"]');
+
+		// у каждой из вкладок есть атрибут `data-tab--id`, по которому будет находиться соответствующее содержимое
+		var target = content.find('[data-tab--id="'+ obj.attr('data-tab--id') +'"]');
 
 		content.animate({'height': target.height()}, 300, function () {
 			content.css('height','');
