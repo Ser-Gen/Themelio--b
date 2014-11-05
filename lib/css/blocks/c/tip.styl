@@ -24,9 +24,9 @@ style{#TipHolderContent1:before { content: url(http://placekitten.com/200/300); 
 ```
 */
 
-Tip_BG = Tip_BG is defined ? Tip_BG : rgba(0,0,0,.9);
-Tip_Color = Tip_Color is defined ? Tip_Color : #fff;
-Tip_ArrowSize = 6px;
+$Tip_BG = $Tip_BG is defined ? $Tip_BG : rgba(0,0,0,.9);
+$Tip_Color = $Tip_Color is defined ? $Tip_Color : #fff;
+$Tip_ArrowSize = $Tip_ArrowSize is defined ? $Tip_ArrowSize : 6px;
 
 
 .Tip,
@@ -72,10 +72,10 @@ Tip_ArrowSize = 6px;
 
 .Tip,
 .TipHolder:before {
-	background: Tip_BG;
+	background: $Tip_BG;
 	border-radius: .5em;
 	box-shadow: 0 .2em .3em rgba(0,0,0,.4);
-	color: Tip_Color;
+	color: $Tip_Color;
 	
 	/* нельзя использовать относительные величины из-за Хрома */
 	/* ну и ладно */
@@ -83,7 +83,7 @@ Tip_ArrowSize = 6px;
 }
 .Tip:after,
 .TipHolder:after {
-	color: Tip_BG;
+	color: $Tip_BG;
 }
 
 .Tip:after,
@@ -116,15 +116,15 @@ Tip_ArrowSize = 6px;
 }
 .Tip.top:after,
 .TipHolder.top:after {
-	border-top: Tip_ArrowSize solid;
-	border-left: Tip_ArrowSize solid transparent;
-	border-right: Tip_ArrowSize solid transparent;
+	border-top: $Tip_ArrowSize solid;
+	border-left: $Tip_ArrowSize solid transparent;
+	border-right: $Tip_ArrowSize solid transparent;
 }
 .Tip.top:after {
-	bottom: -(Tip_ArrowSize);
+	bottom: -($Tip_ArrowSize);
 }
 .TipHolder.top:before {
-	margin-bottom: (Tip_ArrowSize - 1px);
+	margin-bottom: ($Tip_ArrowSize - 1px);
 }
 
 .TipHolder.bottom:before,
@@ -133,15 +133,15 @@ Tip_ArrowSize = 6px;
 }
 .Tip.bottom:after,
 .TipHolder.bottom:after {
-	border-bottom: Tip_ArrowSize solid;
-	border-left: Tip_ArrowSize solid transparent;
-	border-right: Tip_ArrowSize solid transparent;
+	border-bottom: $Tip_ArrowSize solid;
+	border-left: $Tip_ArrowSize solid transparent;
+	border-right: $Tip_ArrowSize solid transparent;
 }
 .Tip.bottom:after {
-	top: -(Tip_ArrowSize);
+	top: -($Tip_ArrowSize);
 }
 .TipHolder.bottom:before {
-	margin-top: (Tip_ArrowSize - 1px);
+	margin-top: ($Tip_ArrowSize - 1px);
 }
 
 
@@ -161,15 +161,15 @@ Tip_ArrowSize = 6px;
 }
 .Tip.left:after,
 .TipHolder.left:after {
-	border-left: Tip_ArrowSize solid;
-	border-top: Tip_ArrowSize solid transparent;
-	border-bottom: Tip_ArrowSize solid transparent;
+	border-left: $Tip_ArrowSize solid;
+	border-top: $Tip_ArrowSize solid transparent;
+	border-bottom: $Tip_ArrowSize solid transparent;
 }
 .Tip.left:after {
-	right: -(Tip_ArrowSize);
+	right: -($Tip_ArrowSize);
 }
 .TipHolder.left:before {
-	margin-right: (Tip_ArrowSize - 1px);
+	margin-right: ($Tip_ArrowSize - 1px);
 }
 
 .TipHolder.right:before,
@@ -178,13 +178,13 @@ Tip_ArrowSize = 6px;
 }
 .Tip.right:after,
 .TipHolder.right:after {
-	border-right: Tip_ArrowSize solid;
-	border-top: Tip_ArrowSize solid transparent;
-	border-bottom: Tip_ArrowSize solid transparent;
+	border-right: $Tip_ArrowSize solid;
+	border-top: $Tip_ArrowSize solid transparent;
+	border-bottom: $Tip_ArrowSize solid transparent;
 }
 .Tip.right:after {
-	left: -(Tip_ArrowSize);
+	left: -($Tip_ArrowSize);
 }
 .TipHolder.right:before {
-	margin-left: (Tip_ArrowSize - 1px);
+	margin-left: ($Tip_ArrowSize - 1px);
 }

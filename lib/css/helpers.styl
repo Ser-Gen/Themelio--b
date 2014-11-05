@@ -1,3 +1,11 @@
+
+$lineHeight = $lineHeight is defined ? $lineHeight : 1.5em;
+
+$infoColor = $infoColor is defined ? $infoColor : #666;
+$errorColor = $errorColor is defined ? $errorColor : #c00;
+$successColor = $successColor is defined ? $successColor : #693;
+
+
 /* HELPERS
 ---------------------------------------------------------------------*/
 
@@ -103,9 +111,9 @@ http://stackoverflow.com/questions/6424088/css-column-breaks
 }
 
 
-.c-info, .c-gray { color: infoColor; }
-.c-error, .c-red { color: errorColor; }
-.c-success, .c-green { color: successColor; }
+.c-info, .c-gray { color: $infoColor; }
+.c-error, .c-red { color: $errorColor; }
+.c-success, .c-green { color: $successColor; }
 
 .t-a-l { text-align: left; }
 .t-a-c { text-align: center; }
