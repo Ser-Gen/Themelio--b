@@ -542,14 +542,17 @@ if (!$ie) {
 </div>
 */
 
-.Range {}
-
+.Range__group,
+.Range__box {
+	box-sizing: border-box;
+}
 .Range__group {
-	@extend .PseudoTable;
+	display: table;
 	width: 100%;
 }
 .Range__box {
-	@extend .PseudoTable__cell;
+	display: table-cell;
+	vertical-align: middle;
 }
 .Range__box.divider {
 	padding-x: .75em;
